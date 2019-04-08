@@ -11,6 +11,12 @@ const presets = [
             useBuiltIns: "usage",
         },
     ],
+    [
+        "@babel/react",
+        {
+            development: process.env.BABEL_ENV === "development",
+        },
+    ],
 ];
   
 module.exports = { presets };
