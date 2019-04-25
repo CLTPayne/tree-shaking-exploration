@@ -6,7 +6,7 @@ An isolated environment to explore how tree shaking works with webpack 4. This w
 #### How to start a project:
 1. Fork this project in the GitHub UI
 2. Clone your forked copy ```git clone https://github.com/[YOUR-USERNAME]/tree-shaking-exploration```
-3. Change into the directory ```cd react-playground```
+3. Change into the directory ```cd tree-shaking-exploration```
 4. Use node version 10.8.0 and have npm installed
 5. Run ```npm install``` to add module dependencies
 
