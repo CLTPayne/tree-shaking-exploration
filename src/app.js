@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _ from 'lodash';
+import get from 'lodash/get';
 
 const appData = {
     panda: {
@@ -21,7 +21,7 @@ const appData = {
 }
 
 const App = () => {
-    const pandaWeight = _.get(appData, ["panda", "weight", "1"])
+    const pandaWeight = get(appData, ["panda", "weight", "1"])
     return (
         <div>
             Hello, did you know that pandas can weigh {pandaWeight}? Interesting huh?
