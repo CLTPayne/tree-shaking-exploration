@@ -39,17 +39,21 @@ I need an isolated project to build a test case
 ##### Iteration 2
 5. Changed the import of `get` to access the function from `lodash/get`
 7. Building the project now produces a bundle of main.js at 125 KiB (using webpack)
-8. Running bundle analyzer and main bundle is listsed as 153KB in the analyser output. Lodash is 30.93KB stat size, 7.14KB parsed, 2.16KB gzipped.
+8. Running bundle analyzer and main bundle is listsed as 153.07KB in the analyser output. Lodash is 30.93KB stat size, 7.14KB parsed, 2.16KB gzipped.
 9. Here is the new analysis: ![Web Pack Analyzer](./readme_images/import-get-from-lodash-slash-get.png)
 
-##### Iteration 2
-5. Installed `lodash-es` so as to use the versio of the lodash library that is exported as ES modules.
-6. Changed the import of `get` to access the function from `lodash-es`
-7. Building the project now produces a bundle of main.js at 123 KiB (using webpack)
-9. Here is the new analysis : ![Web Pack Analyzer](./readme_images/import-get-from-lodash-slash-get.png)
+##### Iteration 3
+10. Installed `lodash-es` for the lodash library as ES modules.
+11. Changed the import of `get` to access the function from `lodash-es/get`
+12. Building the project now produces a bundle of main.js at 123 KiB (using webpack)
+13. Running bundle analyzer and main bundle is listsed as 152.97KB in the analyser output. Lodash-es is insanely small: 171B stat size, 116B parsed, 114B gzipped. Here is the analyzer as proof: ![Web Pack Anazlyzer Lodash ES](./readme_images/import-get-from-lodash-es-module-stats.png)
+14. Here is the new analysis: ![Web Pack Analyzer](./readme_images/import-get-from-lodash-es-get.png)
 
 ##### Conclusions
-10. First bundle analyzer lists lodash as 527KB. First main bundle (649KB) minus this lodash (527KB) is 122KB - essentially the main bundle using `lodash-es`. 
-11. Webpack does not tree shake lodash. It is not 'OK' to use `import * as _ from 'lodash'`. 
-12. Save the browser having to parse approximately 527KB of un-gzipped javascript in your bundle by using `lodash-es` and importing only the functions you specifically need in the client side app. 
+15. Parsed size of the bundle corresponds with the output of the webpack `npm run build` step. 
+16. First bundle analyzer lists lodash as 527KB. First main bundle (649KB) minus this lodash (527KB) is 122KB - essentially the main bundle using `lodash/get` and `lodash-es`. 
+17. It is not 'OK' to use `import * as _ from 'lodash'`. But you do not have to use `lodash-es` to reduce the bundle. 
+18. Save the browser having to parse approximately 527KB of un-gzipped javascript in your bundle by using cherry picking from `lodash/[function_name]` or `lodash-es/[function_name]` to import only the functions you specifically need in the client side app. 
 
+##### Questions
+19. Why does the 30KB of lodash from `lodash/get` not impact the bundle size more. I.e. causing a bigger difference between iteraction 2 and 3. 
