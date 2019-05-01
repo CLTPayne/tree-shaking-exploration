@@ -1,12 +1,11 @@
-const path = require('path');
-
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+  entry: {
+      'dist/main': './src/index.js',
   },
-  module: {
+  output: {
+      path: __dirname,
+  },
+    module: {
     rules: [
       {
         test: /\.m?js$/,
@@ -20,4 +19,4 @@ module.exports = {
       }
     ]
   }
-};
+}
