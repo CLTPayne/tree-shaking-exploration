@@ -54,6 +54,7 @@ I need an isolated project to build a test case
 16. First bundle analyzer lists lodash as 527KB. First main bundle (649KB) minus this lodash (527KB) is 122KB - essentially the main bundle using `lodash/get` and `lodash-es`. 
 17. It is not 'OK' to use `import * as _ from 'lodash'`. But you do not have to use `lodash-es` to reduce the bundle. 
 18. Save the browser having to process approximately 527KB of javascript in your bundle by using cherry picking from `lodash/[function_name]` or `lodash-es/[function_name]` to import only the functions you specifically need in the client side app. 
+19. If you're using more than one or two utility functions from lodash in your client side app, the fact that code can be shared across the ES modules means that there will be aggregated bundle size improvements from choosing `lodash-es/[function_name]` as detailed in this investigation - https://itnext.io/lodash-es-vs-individual-lodash-utilities-size-comparison-676f14b07568.
 
 ##### Questions
-19. Why does the 30KB of lodash from `lodash/get` not impact the bundle size more. I.e. causing a bigger difference between iteraction 2 and 3. 
+20. Why does the 30KB of lodash from `lodash/get` not impact the bundle size more. I.e. causing a bigger difference between iteraction 2 and 3. 
